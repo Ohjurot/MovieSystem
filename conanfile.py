@@ -5,15 +5,19 @@ class MoxPPRecipe(ConanFile):
     generators = "PremakeDeps"
 
     def requirements(self):
-        # You can add your own external requirements. Spdlog is provided as an example!
-        self.requires("spdlog/1.13.0")
-
-        # This is required for unit testing! Only remove it when not using unit tests!
-        # You can also swap the testing framework. There is no hard reference to gtest in MoxPP!
-        self.requires("gtest/1.15.0") 
+        self.requires("wxwidgets/3.2.6")    # UI
+        self.requires("cpr/1.11.1")         # Web/API Calls
+        self.requires("sqlitecpp/3.3.2")    # DB (for project files / data)
+        self.requires("libcurl/8.11.1")     # Explicit curl version for cpr
+        self.requires("openssl/3.4.1")      # Explicit openssl
 
     def configure(self):
-        # This only works on windows (we added this so that you can see
-        # how to change settings of packages)
-        # self.options["spdlog"].wchar_support = True
-        pass
+        self.options["wxwidgets"].jpeg = "mozjpeg"
+        self.options["wxwidgets"].opengl = False
+        self.options["wxwidgets"].cairo = False
+
+        self.options["cpr"].with_ssl = "openssl"
+
+        self.options["libtiff"].jpeg = "mozjpeg"
+        self.options["libtiff"].jbig = False
+        self.options["libtiff"].lzma = False

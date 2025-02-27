@@ -4,7 +4,7 @@
 -- PRODUCT NAME
 -- This the name used for the product provided by this repo
 -- (On windows used as the solution name)
-cmox_product_name = "MoxPP"
+cmox_product_name = "MovieSystem"
 
 -- CONFIGURATIONS
 -- The first array _n are the configuration names
@@ -40,30 +40,32 @@ cmox_src_folder = "src"
 -- "manual"         Projects are not loaded by the MoxPP
 --                  provide the "cmox_function_includeprojects"
 --                  function.
-cmox_project_architecture = "single" 
+cmox_project_architecture = "flat"
 
 -- MACRO PREFIX
 -- This will be prepended to ALL non default macros
-cmox_macro_prefix = "MOXPP_"
+cmox_macro_prefix = "MVS_"
 
 -- UNITTEST
 -- This defines where to find the unit test code.
 -- You can set this to nil. When set to nil no test will be configured. 
 -- You can delete the default test folder then
-cmox_unit_test_src = "test"
+cmox_unit_test_src = nil
 
 -- === Custom callback functions ===
 -- This is the way to go when implementing custom features
 
 -- This function is called when the workspace is configured
--- function cmox_function_setupworkspace()
---    ...
--- end
+function cmox_function_setupworkspace()
+    startproject "MovieSystemUI"
+end
 
 -- This function is called for each project when it's beeing configured
--- function cmox_function_setupproject()
---     ...
--- end
+function cmox_function_setupproject()
+    defines {
+
+    }
+end
 
 -- This function is called in manual configuration to include 
 -- the project
