@@ -63,7 +63,7 @@ end
 -- This function is called for each project when it's beeing configured
 function cmox_function_setupproject()
     defines {
-
+        "_CRT_SECURE_NO_WARNINGS",
     }
 end
 
